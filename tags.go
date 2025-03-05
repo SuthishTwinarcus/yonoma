@@ -16,7 +16,7 @@ type Tag struct {
 // List all tags
 func ListTags() ([]Tag, error) {
 	var tags []Tag
-	err := request("GET", "/tags", nil, &tags)
+	err := request("GET", "tags/list", nil, &tags)
 	return tags, err
 }
 
