@@ -3,8 +3,12 @@ package yonoma
 import "fmt"
 
 // ListParams for creating/updating lists
+//
+//	type ListParams struct {
+//		Name string `json:"name,omitempty"`
+//	}
 type ListParams struct {
-	Name string `json:"name,omitempty"`
+	Lists []List `json:"lists"`
 }
 
 // List represents a Yonoma list
