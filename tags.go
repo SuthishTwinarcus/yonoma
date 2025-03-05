@@ -16,20 +16,20 @@ type Tag struct {
 // List all tags
 func ListTags() ([]Tag, error) {
 	var tags []Tag
-	err := request("GET", "/tags", nil, &tags)
+	err := request("GET", "tags/list", nil, &tags)
 	return tags, err
 }
 
 // New creates a new tag
 func NewTag(params *TagParams) (*Tag, error) {
 	var tag Tag
-	err := request("POST", "/tags", params, &tag)
+	err := request("POST", "tags/create", params, &tag)
 	return &tag, err
 }
 
 // Retrieve a tag
 func RetrieveTag(tagID string) (*Tag, error) {
-	url := fmt.Sprintf("/tags/%s", tagID)
+	url := fmt.Sprintf("tags/%s", tagID)
 	var tag Tag
 	err := request("GET", url, nil, &tag)
 	return &tag, err
@@ -37,12 +37,12 @@ func RetrieveTag(tagID string) (*Tag, error) {
 
 // Update a tag
 func UpdateTag(tagID string, params *TagParams) error {
-	url := fmt.Sprintf("/tags/%s", tagID)
-	return request("PATCH", url, params, nil)
+	url := fmt.Sprintf("tags/%s/update", tagID)
+	return request("POST", url, params, nil)
 }
 
 // Delete a tag
 func DeleteTag(tagID string) error {
-	url := fmt.Sprintf("/tags/%s", tagID)
-	return request("DELETE", url, nil, nil)
+	url := fmt.Sprintf("tags/%s/delete", tagID)
+	return request("POST", url, nil, nil)
 }

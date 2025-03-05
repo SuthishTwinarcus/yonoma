@@ -18,7 +18,7 @@ type Contact struct {
 // New creates a new contact
 func NewContact(params *ContactParams) (*Contact, error) {
 	var contact Contact
-	err := request("POST", "/contacts", params, &contact)
+	err := request("POST", "contacts/%s/create", params, &contact)
 	return &contact, err
 }
 
